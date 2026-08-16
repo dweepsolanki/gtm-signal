@@ -327,5 +327,7 @@ class App(SimpleHTTPRequestHandler):
 
 
 if __name__ == "__main__":
-    print("GTM Signal running at http://localhost:8000")
-    ThreadingHTTPServer(("127.0.0.1", 8000), App).serve_forever()
+    host = "0.0.0.0"
+    port = int(os.environ.get("PORT", "8000"))
+    print(f"GTM Signal running at http://localhost:{port}")
+    ThreadingHTTPServer((host, port), App).serve_forever()
